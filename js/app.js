@@ -1,5 +1,6 @@
 'use strict';
-
+let arrOfprop = [];
+let arrofOption =[];
 function Animals(animals) {
    
     this.image_url = animals.image_url;
@@ -7,7 +8,7 @@ function Animals(animals) {
     this.description = animals.description;
     this.keyword = animals.keyword;
     this.horns = animals.horns;
-
+    arrOfprop.push(this);
   }
 
 
@@ -20,12 +21,22 @@ function Animals(animals) {
     containerPerson.find('p').text(this.description);
     
     containerPerson.removeClass('photo-template');
-    containerPerson.attr("class", this.keyword);
+    containerPerson.attr("class", `${this.keyword} filter`);
     $('main').append(containerPerson);
 
+    this.optionRender();
 }
 
+Animals.prototype.optionRender=function() {
 
+let opt = `<option>${this.keyword}</option>`
+
+if(arrofOption.includes(this.keyword)===true){}
+else{
+  arrofOption.push(this.keyword);
+  $(".select").append(opt);
+}
+}
 
 
   const ajaxData = {
@@ -41,3 +52,24 @@ function Animals(animals) {
       titleObject.render();
     });
   });
+
+
+
+  $(".select").on("change",function(event){
+    let selectKeyword=this.value;
+    if(selectKeyword!=="select"){
+      renderFilterhorns(selectKeyword);
+    }
+  });
+
+
+function renderFilterhorns(selectKeyword){
+  arrOfprop.forEach((kind)=>{
+if(kind.keyword ===selectKeyword ){
+$(`.${selectKeyword}`).addClass("filter");
+}
+else{
+  $(`.${kind.keyword}`).removeClass("filter")
+}
+  })
+}
