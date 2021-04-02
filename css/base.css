@@ -5,14 +5,12 @@ header{
     text-align: center;
 }
 main{
-    width: 90%;
-    margin-left: 80px;
+    width: 100%;
+    margin-left: 100px;
 }
 div{
-
     display: none;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
 }
 
 img{
@@ -24,16 +22,16 @@ h2{
     font-size: 15px;
     color: #fa8072;
     text-align: center;
+ 
 }
-p{
 
+p{
 font-size: 10px;  
 width: 250px;
+/* margin: 10px; */
 text-align: center;
-
 }
 select{
-
     text-align: center;
 }
 footer{
